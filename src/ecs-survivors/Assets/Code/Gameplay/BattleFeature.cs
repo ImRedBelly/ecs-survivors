@@ -2,6 +2,7 @@
 using Code.Gameplay.Features.DamageApplication;
 using Code.Gameplay.Features.Enemies;
 using Code.Gameplay.Features.Hero;
+using Code.Gameplay.Features.Lifetime;
 using Code.Gameplay.Features.Movement;
 using Code.Gameplay.Features.TargetCollection;
 using Code.Gameplay.Input;
@@ -24,6 +25,8 @@ namespace Code.Gameplay
             Add(factory.Create<DamageApplicationFeature>());
             
             Add(factory.Create<ProcessDestructedFeature>());
+            
+            Add(factory.Create<DeathFeature>());
         }
     }
 }
