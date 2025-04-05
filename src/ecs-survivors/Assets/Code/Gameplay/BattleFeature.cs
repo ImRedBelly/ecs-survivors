@@ -1,4 +1,6 @@
 ﻿using Code.Common.Destruct;
+using Code.Gameplay.Features.Abilities;
+using Code.Gameplay.Features.Armaments;
 using Code.Gameplay.Features.DamageApplication;
 using Code.Gameplay.Features.Enemies;
 using Code.Gameplay.Features.Hero;
@@ -17,17 +19,19 @@ namespace Code.Gameplay
         {
             Add(factory.Create<InputFeature>());
             Add(factory.Create<BindViewFeature>());
-            
+
             Add(factory.Create<HeroFeature>());
             Add(factory.Create<EnemyFeature>());
-            
+
             Add(factory.Create<MovementFeature>());
-            
+            Add(factory.Create<AbilityFeature>());
+            Add(factory.Create<ArmamentFeature>());
+
             Add(factory.Create<CollectTargetsFeature>());
             Add(factory.Create<DamageApplicationFeature>());
-            
+
             Add(factory.Create<ProcessDestructedFeature>());
-            
+
             Add(factory.Create<DeathFeature>());
         }
     }
