@@ -33,7 +33,7 @@ namespace Code.Gameplay.Features.Armaments.Factory
                     .AddViewPrefab(abilityLevel.viewPrefab)
                     .AddWorldPosition(at)
                     .AddSpeed(setup.speed)
-                    .AddDamage(1)
+                    .AddEffectSetups(abilityLevel.effectSetups)
                     .AddRadius(setup.contactRadius)
                     .AddTargetsBuffer(new List<int>(TargetBufferSize))
                     .AddProcessedTargets(new List<int>(TargetBufferSize))

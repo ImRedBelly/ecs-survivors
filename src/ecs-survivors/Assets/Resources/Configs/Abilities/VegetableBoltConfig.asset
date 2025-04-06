@@ -16,6 +16,9 @@ MonoBehaviour:
   levels:
   - cooldown: 1
     viewPrefab: {fileID: 636375727724718168, guid: 08ce9f5922001044d87f0b92a159a8c4, type: 3}
+    effectSetups:
+    - effectTypeId: 1
+      value: 1
     projectileSetup:
       speed: 2
       contactRadius: 0.1
