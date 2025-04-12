@@ -9,7 +9,10 @@ namespace Code.Gameplay.Features.Armaments.System
 
         public FinalizeProcessedArmamentsSystem(GameContext gameContext)
         {
-            _armaments = gameContext.GetGroup(GameMatcher.AllOf(GameMatcher.Armament, GameMatcher.Processed));
+            _armaments = gameContext.GetGroup(GameMatcher
+                .AllOf(
+                    GameMatcher.Armament,
+                GameMatcher.Processed));
         }
 
         public void Execute()

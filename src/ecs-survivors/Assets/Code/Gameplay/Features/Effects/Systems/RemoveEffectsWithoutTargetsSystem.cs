@@ -10,7 +10,9 @@ namespace Code.Gameplay.Features.Effects.Systems
 
         public RemoveEffectsWithoutTargetsSystem(GameContext gameContext)
         {
-            _effects = gameContext.GetGroup(GameMatcher.AllOf(GameMatcher.Effect, GameMatcher.TargetId));
+            _effects = gameContext.GetGroup(GameMatcher.AllOf(
+                GameMatcher.Effect, 
+                GameMatcher.TargetId));
         }
 
         public void Execute()

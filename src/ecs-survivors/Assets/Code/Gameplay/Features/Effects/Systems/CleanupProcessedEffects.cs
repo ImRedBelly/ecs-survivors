@@ -3,23 +3,22 @@ using Entitas;
 
 namespace Code.Gameplay.Features.Effects.Systems
 {
-    public sealed class CleanupProcessedEffectsSystem : IExecuteSystem
-    {
+    public sealed class CleanupProcessedEffects : ICleanupSystem
+    {  
         private readonly IGroup<GameEntity> _effects;
         private readonly List<GameEntity> _buffer = new(32);
 
-        public CleanupProcessedEffectsSystem(GameContext gameContext)
+        public CleanupProcessedEffects(GameContext gameContext)
         {
             _effects = gameContext.GetGroup(GameMatcher
                 .AllOf(
                     GameMatcher.Effect,
-                    GameMatcher.Processed
-                ));
+                    GameMatcher.Processed));
         }
-
-        public void Execute()
+        
+        public void Cleanup()
         {
-            foreach (var effect in _effects.GetEntities(_buffer))
+            foreach (GameEntity effect in _effects.GetEntities(_buffer))
             {
                 effect.Destroy();
             }

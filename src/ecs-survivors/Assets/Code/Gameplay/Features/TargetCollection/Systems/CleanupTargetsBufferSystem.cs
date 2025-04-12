@@ -6,17 +6,18 @@ namespace Code.Gameplay.Features.TargetCollection.Systems
     {
         private readonly IGroup<GameEntity> _entities;
 
-        public CleanupTargetsBufferSystem(GameContext gameContext)
+        public CleanupTargetsBufferSystem(GameContext game)
         {
-            _entities = gameContext.GetGroup(GameMatcher.TargetsBuffer);
+            _entities = game.GetGroup(GameMatcher.TargetsBuffer);
         }
-
+    
         public void Cleanup()
         {
-            foreach (var entity in _entities.GetEntities())
+            foreach (GameEntity entity in _entities)
             {
                 entity.TargetsBuffer.Clear();
-            }
+            }  
         }
+
     }
 }

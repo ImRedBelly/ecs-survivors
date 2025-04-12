@@ -27,6 +27,4 @@ namespace Code.Gameplay.Features.Armaments.System
             }
         }
     }
-    
-    
 }

@@ -9,8 +9,8 @@ namespace Code.Gameplay.Features.TargetCollection
         {
             Add(factory.Create<CollectTargetsIntervalSystem>());
             
-            Add(factory.Create<CastForTargetsNoLimitSystems>());
-            Add(factory.Create<CastForTargetsWithLimitSystems>());
+            Add(factory.Create<CastForTargetsNoLimitSystem>());
+            Add(factory.Create<CastForTargetsWithLimitSystem>());
             
             Add(factory.Create<CleanupTargetsBufferSystem>());
         }

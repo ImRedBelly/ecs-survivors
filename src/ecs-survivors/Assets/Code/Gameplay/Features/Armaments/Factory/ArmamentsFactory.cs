@@ -34,6 +34,7 @@ namespace Code.Gameplay.Features.Armaments.Factory
                     .AddWorldPosition(at)
                     .AddSpeed(setup.speed)
                     .AddEffectSetups(abilityLevel.effectSetups)
+                    .AddStatusSetups(abilityLevel.statusSetups)
                     .AddRadius(setup.contactRadius)
                     .AddTargetsBuffer(new List<int>(TargetBufferSize))
                     .AddProcessedTargets(new List<int>(TargetBufferSize))
@@ -42,7 +43,7 @@ namespace Code.Gameplay.Features.Armaments.Factory
                     .With(x => x.isMovementAvailable = true)
                     .With(x => x.isReadyToCollectTargets = true)
                     .With(x => x.isCollectingTargetsContinuously = true)
-                     .With(x => x.isRotationAlignedAlongDirection = true)
+                    .With(x => x.isRotationAlignedAlongDirection = true)
                     .AddSelfDestructTimer(setup.lifetime)
                 ;
         }

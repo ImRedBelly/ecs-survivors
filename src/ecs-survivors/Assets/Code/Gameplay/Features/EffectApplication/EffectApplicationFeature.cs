@@ -8,6 +8,7 @@ namespace Code.Gameplay.Features.EffectApplication
         public EffectApplicationFeature(ISystemFactory factory)
         {
             Add(factory.Create<ApplyEffectsOnTargetsSystem>());
+            Add(factory.Create<ApplyStatusesOnTargetsSystem>());
         }
     }
 }

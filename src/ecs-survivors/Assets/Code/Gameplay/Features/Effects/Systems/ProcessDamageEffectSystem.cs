@@ -23,7 +23,7 @@ namespace Code.Gameplay.Features.Effects.Systems
             {
                 GameEntity target = effect.Target();
 
-                target.isProcessed = true;
+                effect.isProcessed = true;
 
                 if (target.isDead)
                 {
