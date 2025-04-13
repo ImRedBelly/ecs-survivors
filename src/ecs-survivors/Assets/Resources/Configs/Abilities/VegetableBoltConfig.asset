@@ -18,12 +18,16 @@ MonoBehaviour:
     viewPrefab: {fileID: 636375727724718168, guid: 08ce9f5922001044d87f0b92a159a8c4, type: 3}
     effectSetups:
     - effectTypeId: 1
-      value: 1
+      value: 0.1
     statusSetups:
     - statusTypeId: 1
-      value: 1
+      value: 0
       duration: 3
       period: 1
+    - statusTypeId: 2
+      value: -5
+      duration: 1
+      period: 0
     projectileSetup:
       speed: 2
       contactRadius: 0.1
