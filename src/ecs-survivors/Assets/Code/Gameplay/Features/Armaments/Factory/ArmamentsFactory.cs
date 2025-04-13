@@ -27,25 +27,66 @@ namespace Code.Gameplay.Features.Armaments.Factory
             AbilityLevel abilityLevel = _staticDataService.GetAbilityLevel(AbilityId.VegetableBolt, level);
             ProjectileSetup setup = abilityLevel.projectileSetup;
 
+            return CreateProjectileEntity(at, abilityLevel, setup)
+                    .AddParentAbility(AbilityId.VegetableBolt)
+                    .With(x => x.isRotationAlignedAlongDirection = true)
+                ;
+        }
+
+
+        public GameEntity CreateOrbitingMushroom(int level, Vector3 at, float phase)
+        {
+            AbilityLevel abilityLevel = _staticDataService.GetAbilityLevel(AbilityId.OrbitingMushroom, level);
+            ProjectileSetup setup = abilityLevel.projectileSetup;
+
+            return CreateProjectileEntity(at, abilityLevel, setup)
+                    .AddParentAbility(AbilityId.OrbitingMushroom)
+                    .AddOrbitPhase(phase)
+                    .AddOrbitRadius(setup.orbitalRadius)
+                ;
+        }
+
+        public GameEntity CreateEffectAura(AbilityId parentAbilityId, int producerId, int level)
+        {
+            AbilityLevel abilityLevel = _staticDataService.GetAbilityLevel(AbilityId.GarlicAura, level);
+            AuraSetup auraSetup = abilityLevel.auraSetup;
+
             return CreateEntity.Empty()
                     .AddId(_identifiers.Next())
-                    .With(x => x.isArmament = true)
+                    .AddParentAbility(parentAbilityId)
                     .AddViewPrefab(abilityLevel.viewPrefab)
-                    .AddWorldPosition(at)
-                    .AddSpeed(setup.speed)
-                    .AddEffectSetups(abilityLevel.effectSetups)
-                    .AddStatusSetups(abilityLevel.statusSetups)
-                    .AddRadius(setup.contactRadius)
+                    .With(x => x.AddEffectSetups(abilityLevel.effectSetups), when: !abilityLevel.effectSetups.IsNullOrEmpty())
+                    .With(x => x.AddStatusSetups(abilityLevel.statusSetups), when: !abilityLevel.statusSetups.IsNullOrEmpty())
+                    .AddProducerId(producerId)
                     .AddTargetsBuffer(new List<int>(TargetBufferSize))
-                    .AddProcessedTargets(new List<int>(TargetBufferSize))
-                    .AddTargetLimit(setup.pierce)
                     .AddLayerMask(CollisionLayer.Enemy.AsMask())
-                    .With(x => x.isMovementAvailable = true)
-                    .With(x => x.isReadyToCollectTargets = true)
-                    .With(x => x.isCollectingTargetsContinuously = true)
-                    .With(x => x.isRotationAlignedAlongDirection = true)
-                    .AddSelfDestructTimer(setup.lifetime)
+                    .AddRadius(auraSetup.radius)
+                    .AddCollectTargetsInterval(auraSetup.interval)
+                    .AddCollectTargetsTimer(0)
+                    .AddWorldPosition(Vector3.zero)
+                    .With(x => x.isFollowingProduces = true)
                 ;
+        }
+
+        private GameEntity CreateProjectileEntity(Vector3 at, AbilityLevel abilityLevel, ProjectileSetup setup)
+        {
+            return CreateEntity.Empty()
+                .AddId(_identifiers.Next())
+                .With(x => x.isArmament = true)
+                .AddViewPrefab(abilityLevel.viewPrefab)
+                .AddWorldPosition(at)
+                .AddSpeed(setup.speed)
+                .With(x => x.AddEffectSetups(abilityLevel.effectSetups), when: !abilityLevel.effectSetups.IsNullOrEmpty())
+                .With(x => x.AddStatusSetups(abilityLevel.statusSetups), when: !abilityLevel.statusSetups.IsNullOrEmpty())
+                .AddRadius(setup.contactRadius)
+                .AddTargetsBuffer(new List<int>(TargetBufferSize))
+                .AddProcessedTargets(new List<int>(TargetBufferSize))
+                .With(x => x.AddTargetLimit(setup.pierce), when: setup.pierce > 0)
+                .AddLayerMask(CollisionLayer.Enemy.AsMask())
+                .With(x => x.isMovementAvailable = true)
+                .With(x => x.isReadyToCollectTargets = true)
+                .With(x => x.isCollectingTargetsContinuously = true)
+                .AddSelfDestructTimer(setup.lifetime);
         }
     }
 }

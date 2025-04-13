@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5470e25c52d467d9b92a3344f464540, type: 3}
+  m_Name: OrbitingMushroomConfig
+  m_EditorClassIdentifier: 
+  abilityId: 3
+  levels:
+  - cooldown: 5
+    viewPrefab: {fileID: 636375727724718168, guid: 92dc63e318e181a4a9587ecf7216ee46, type: 3}
+    effectSetups:
+    - effectTypeId: 1
+      value: 0.1
+    statusSetups:
+    - statusTypeId: 1
+      value: 0
+      duration: 3
+      period: 1
+    - statusTypeId: 2
+      value: -5
+      duration: 1
+      period: 0
+    projectileSetup:
+      projectileCount: 3
+      speed: 2
+      contactRadius: 0.1
+      pierce: 0
+      lifetime: 3
+      orbitalRadius: 1
+    auraSetup:
+      radius: 0
+      interval: 0

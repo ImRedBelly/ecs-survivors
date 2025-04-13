@@ -45,7 +45,7 @@ namespace Code.Gameplay.Features.Abilities.Systems
                         .AddProducerId(hero.Id)
                         .ReplaceDirection((FirstAvailableTarget().WorldPosition - hero.WorldPosition).normalized)
                         .With(x => x.isMoving = true);
-                    
+
                     ability.PutOnCooldown(_staticDataService.GetAbilityLevel(AbilityId.VegetableBolt, 1).cooldown);
                 }
             }

@@ -10,12 +10,13 @@ namespace Code.Gameplay.Features.Abilities.Configs
     public class AbilityLevel
     {
         public float cooldown;
-        
+
         public EntityBehaviour viewPrefab;
 
         public List<EffectSetup> effectSetups;
         public List<StatusSetup> statusSetups;
-        
+
         public ProjectileSetup projectileSetup;
+        public AuraSetup auraSetup;
     }
 }
