@@ -3,6 +3,7 @@ using Code.Gameplay.Features.Abilities;
 using Code.Gameplay.Features.Armaments;
 using Code.Gameplay.Features.EffectApplication;
 using Code.Gameplay.Features.Effects;
+using Code.Gameplay.Features.Enchants;
 using Code.Gameplay.Features.Enemies;
 using Code.Gameplay.Features.Hero;
 using Code.Gameplay.Features.Hero.Factory;
@@ -34,6 +35,7 @@ namespace Code.Gameplay
             Add(factory.Create<CollectTargetsFeature>());
             Add(factory.Create<EffectApplicationFeature>());
             
+            Add(factory.Create<EnchantFeature>());
             Add(factory.Create<EffectFeature>());
             Add(factory.Create<StatusFeature>());
             Add(factory.Create<StatsFeature>());

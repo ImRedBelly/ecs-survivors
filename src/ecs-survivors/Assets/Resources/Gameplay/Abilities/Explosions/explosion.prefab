@@ -35,7 +35,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &7559575448872867541
 Animator:
-  serializedVersion: 5
+  serializedVersion: 7
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -49,6 +49,7 @@ Animator:
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
@@ -103,6 +104,9 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -147,8 +151,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5085295905152078495}
-  - component: {fileID: 6902555966744461871}
-  - component: {fileID: 5978876680084877412}
+  - component: {fileID: 3271291294837554306}
+  - component: {fileID: 941592273249184046}
   m_Layer: 0
   m_Name: explosion
   m_TagString: Untagged
@@ -172,7 +176,7 @@ Transform:
   - {fileID: 872144433148828180}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6902555966744461871
+--- !u!114 &3271291294837554306
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -181,10 +185,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6132165199372968982}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 511653e70f1b4434a642cfce8b90ee4e, type: 3}
+  m_Script: {fileID: 11500000, guid: 6eb0f7fa93c845bd994d40e7fe2fbde4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &5978876680084877412
+--- !u!114 &941592273249184046
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -193,7 +197,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 6132165199372968982}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a05134c594a6494d9f8c83798b4783ab, type: 3}
+  m_Script: {fileID: 11500000, guid: 803d656312bc4a3d8b07b1be4646731f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EntityView: {fileID: 6902555966744461871}
+  entityView: {fileID: 3271291294837554306}
+  Transform: {fileID: 5085295905152078495}
