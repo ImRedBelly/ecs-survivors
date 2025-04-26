@@ -8,6 +8,7 @@ using Code.Gameplay.Features.Enemies;
 using Code.Gameplay.Features.Hero;
 using Code.Gameplay.Features.Hero.Factory;
 using Code.Gameplay.Features.Lifetime;
+using Code.Gameplay.Features.Loot;
 using Code.Gameplay.Features.Movement;
 using Code.Gameplay.Features.Statuses;
 using Code.Gameplay.Features.TargetCollection;
@@ -27,6 +28,8 @@ namespace Code.Gameplay
             Add(factory.Create<HeroFeature>());
             Add(factory.Create<EnemyFeature>());
             Add(factory.Create<DeathFeature>());
+            
+            Add(factory.Create<LootFeature>());
 
             Add(factory.Create<MovementFeature>());
             Add(factory.Create<AbilityFeature>());

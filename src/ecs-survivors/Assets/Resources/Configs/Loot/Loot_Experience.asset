@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3d7719d04d947efa0a2e4eae6029b99, type: 3}
+  m_Name: Loot_Experience
+  m_EditorClassIdentifier: 
+  lootTypeId: 1
+  experience: 1
+  viewPrefab: {fileID: 8689588009969810297, guid: ed05576a6ea2aad4893feb6303a2f872, type: 3}
+  effectSetups: []
+  statusSetups: []
