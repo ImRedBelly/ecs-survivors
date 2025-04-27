@@ -2,7 +2,6 @@
 
 namespace Code.Gameplay.Features.Loot
 {
-  
     [Game] public class LootTypeIdComponent : IComponent { public LootTypeId Value; }
     [Game] public class Experience : IComponent { public float Value; }
     

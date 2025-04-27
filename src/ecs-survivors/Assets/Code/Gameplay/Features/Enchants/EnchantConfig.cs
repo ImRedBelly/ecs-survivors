@@ -3,6 +3,7 @@ using Code.Gameplay.Features.Effects;
 using Code.Gameplay.Features.Statuses;
 using Code.Infrastructure.View;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Code.Gameplay.Features.Enchants
 {
@@ -11,6 +12,7 @@ namespace Code.Gameplay.Features.Enchants
     public class EnchantConfig : ScriptableObject
     {
         public EnchantTypeId typeId;
+        public Sprite icon;
         
         public float radius;
         public EntityBehaviour viewPrefab;

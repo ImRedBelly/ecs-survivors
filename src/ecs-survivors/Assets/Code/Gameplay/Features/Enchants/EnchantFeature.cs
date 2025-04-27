@@ -11,6 +11,8 @@ namespace Code.Gameplay.Features.Enchants
             Add(factory.Create<ExplosiveEnchantSystem>());
             
             Add(factory.Create<ApplyPoisonEnchantVisualSystem>());
+            
+            Add(factory.Create<AddEnchantsToHolderSystem>());
         }
     }
 }
