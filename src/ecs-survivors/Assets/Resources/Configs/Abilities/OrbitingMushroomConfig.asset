@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityId: 3
   levels:
-  - cooldown: 5
+  - icon: {fileID: 21300000, guid: 4d94380f2cdab534b96b00f84934873a, type: 3}
+    description: Increases odour strength
+    cooldown: 5
     viewPrefab: {fileID: 636375727724718168, guid: 92dc63e318e181a4a9587ecf7216ee46, type: 3}
     effectSetups:
     - effectTypeId: 1

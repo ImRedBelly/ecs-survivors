@@ -9,6 +9,7 @@ namespace Code.Infrastructure.Installers
     {
         public Camera MainCamera;
         public Transform StartPoint;
+
         private ICameraProvider _cameraProvider;
         private ILevelDataProvider _levelDataProvider;
 

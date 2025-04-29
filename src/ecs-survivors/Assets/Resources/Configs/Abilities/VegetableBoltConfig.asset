@@ -14,11 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityId: 1
   levels:
-  - cooldown: 1
+  - icon: {fileID: -219949570, guid: d5b38a44d661b59469b9795112af70db, type: 3}
+    description: Increases odour strength even further
+    cooldown: 1
     viewPrefab: {fileID: 636375727724718168, guid: 08ce9f5922001044d87f0b92a159a8c4, type: 3}
     effectSetups:
     - effectTypeId: 1
-      value: 0.1
+      value: 1
     statusSetups:
     - statusTypeId: 1
       value: 0
@@ -29,7 +31,12 @@ MonoBehaviour:
       duration: 1
       period: 0
     projectileSetup:
+      projectileCount: 1
       speed: 2
       contactRadius: 0.1
       pierce: 1
       lifetime: 3
+      orbitalRadius: 0
+    auraSetup:
+      radius: 0
+      interval: 0

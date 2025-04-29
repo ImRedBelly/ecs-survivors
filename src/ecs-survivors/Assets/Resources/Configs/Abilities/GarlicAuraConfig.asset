@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityId: 2
   levels:
-  - cooldown: 0
+  - icon: {fileID: 21300000, guid: 7c5b1d69d323a2c489af81f57a7a9602, type: 3}
+    description: Adds an odourous aura
+    cooldown: 0
     viewPrefab: {fileID: 4800283715604915756, guid: c4c8cf39ebe3672468c50bd2fedcd936, type: 3}
     effectSetups: []
     statusSetups:
