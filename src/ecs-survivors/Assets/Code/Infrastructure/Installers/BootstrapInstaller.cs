@@ -22,6 +22,9 @@ using Code.Gameplay.Windows;
 using Code.Infrastructure.AssetManagement;
 using Code.Infrastructure.Identifiers;
 using Code.Infrastructure.Loading;
+using Code.Infrastructure.States.Factory;
+using Code.Infrastructure.States.GameStates;
+using Code.Infrastructure.States.StateMachine;
 using Code.Infrastructure.Systems;
 using Code.Infrastructure.View.Factory;
 using Zenject;
@@ -44,6 +47,31 @@ namespace Code.Infrastructure.Installers
             BindGameplayFactories();
             BindUIFactories();
             BindEntityIndices();
+            BindStateMachine();
+            BindStateFactory();
+            BindGameStates();
+        }
+
+        private void BindStateMachine()
+        {
+            Container.BindInterfacesAndSelfTo<GameStateMachine>().AsSingle();
+        }
+
+        private void BindStateFactory()
+        {
+            Container.BindInterfacesAndSelfTo<StateFactory>().AsSingle();
+        }
+
+        private void BindGameStates()
+        {
+            Container.BindInterfacesAndSelfTo<BootstrapState>().AsSingle();
+            Container.BindInterfacesAndSelfTo<LoadProgressState>().AsSingle();
+            Container.BindInterfacesAndSelfTo<ActualizeProgressState>().AsSingle();
+            Container.BindInterfacesAndSelfTo<LoadingHomeScreenState>().AsSingle();
+            Container.BindInterfacesAndSelfTo<HomeScreenState>().AsSingle();
+            Container.BindInterfacesAndSelfTo<LoadingBattleState>().AsSingle();
+            Container.BindInterfacesAndSelfTo<BattleEnterState>().AsSingle();
+            Container.BindInterfacesAndSelfTo<BattleLoopState>().AsSingle();
         }
 
         private void BindContexts()
@@ -64,7 +92,6 @@ namespace Code.Infrastructure.Installers
             Container.Bind<IStatusApplier>().To<StatusApplier>().AsSingle();
             Container.Bind<ILevelUpService>().To<LevelUpService>().AsSingle();
             Container.Bind<IAbilityUpgradeService>().To<AbilityUpgradeService>().AsSingle();
-            
         }
 
         private void BindGameplayFactories()
@@ -129,8 +156,7 @@ namespace Code.Infrastructure.Installers
 
         public void Initialize()
         {
-            Container.Resolve<IStaticDataService>().LoadAll();
-            Container.Resolve<ISceneLoader>().LoadScene(Scenes.Meadow);
+            Container.Resolve<IGameStateMachine>().Enter<BootstrapState>();
         }
     }
 }
