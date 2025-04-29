@@ -100,10 +100,8 @@ public static class GameComponentsLookup {
     public const int Reached = 89;
     public const int ReadyToCollectTargets = 90;
     public const int TargetsBuffer = 91;
-    public const int AxisInput = 92;
-    public const int Input = 93;
 
-    public const int TotalComponents = 94;
+    public const int TotalComponents = 92;
 
     public static readonly string[] componentNames = {
         "Destructed",
@@ -197,9 +195,7 @@ public static class GameComponentsLookup {
         "Radius",
         "Reached",
         "ReadyToCollectTargets",
-        "TargetsBuffer",
-        "AxisInput",
-        "Input"
+        "TargetsBuffer"
     };
 
     public static readonly System.Type[] componentTypes = {
@@ -294,8 +290,6 @@ public static class GameComponentsLookup {
         typeof(Code.Gameplay.Features.TargetCollection.TargetCollectionComponents.Radius),
         typeof(Code.Gameplay.Features.TargetCollection.TargetCollectionComponents.Reached),
         typeof(Code.Gameplay.Features.TargetCollection.TargetCollectionComponents.ReadyToCollectTargets),
-        typeof(Code.Gameplay.Features.TargetCollection.TargetCollectionComponents.TargetsBuffer),
-        typeof(Code.Gameplay.Input.InputComponents.AxisInput),
-        typeof(Code.Gameplay.Input.InputComponents.Input)
+        typeof(Code.Gameplay.Features.TargetCollection.TargetCollectionComponents.TargetsBuffer)
     };
 }
