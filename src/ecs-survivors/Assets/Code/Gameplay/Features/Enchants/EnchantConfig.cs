@@ -3,7 +3,6 @@ using Code.Gameplay.Features.Effects;
 using Code.Gameplay.Features.Statuses;
 using Code.Infrastructure.View;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Code.Gameplay.Features.Enchants
 {
