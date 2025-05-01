@@ -2,6 +2,7 @@
 using Code.Infrastructure.Systems;
 using Code.Meta.Features.Simulation;
 using Code.Meta.Features.Simulation.Systems;
+using Code.Progress;
 
 namespace Code.Meta
 {
@@ -12,6 +13,7 @@ namespace Code.Meta
             Add(systemFactory.Create<EmitTickSystem>(MetaConstants.SimulationTickSeconds));
             
             Add(systemFactory.Create<SimulationFeature>());
+            Add(systemFactory.Create<PeriodicallySaveProgressSystem>(MetaConstants.SaveProgressPeriodSeconds));
             
             Add(systemFactory.Create<CleanupTickSystem>());
             Add(systemFactory.Create<ProcessDestructedFeature>());

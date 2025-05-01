@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using Code.Common.Entity.ToStrings;
+using Code.Progress;
 using Entitas;
 using UnityEngine;
 
@@ -43,4 +44,5 @@ public sealed partial class MetaEntity : INamedEntity
     }
 
     public string BaseToString() => base.ToString();
+
 }

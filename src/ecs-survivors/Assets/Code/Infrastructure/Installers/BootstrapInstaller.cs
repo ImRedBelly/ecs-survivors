@@ -28,6 +28,7 @@ using Code.Infrastructure.States.StateMachine;
 using Code.Infrastructure.Systems;
 using Code.Infrastructure.View.Factory;
 using Code.Progress.Provider;
+using Code.Progress.SaveLoad;
 using Zenject;
 
 namespace Code.Infrastructure.Installers
@@ -132,6 +133,7 @@ namespace Code.Infrastructure.Installers
             Container.BindInterfacesTo<BootstrapInstaller>().FromInstance(this).AsSingle();
             Container.Bind<IIdentifierService>().To<IdentifierService>().AsSingle();
             Container.Bind<IProgressProvider>().To<ProgressProvider>().AsSingle();
+            Container.Bind<ISaveLoadService>().To<SaveLoadService>().AsSingle();
         }
 
         private void BindAssetManagementServices()
