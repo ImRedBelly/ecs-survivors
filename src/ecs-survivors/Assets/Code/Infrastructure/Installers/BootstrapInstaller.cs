@@ -33,6 +33,8 @@ using Code.Meta.UI.Shop.Service;
 using Code.Meta.UI.Shop.UIFactory;
 using Code.Progress.Provider;
 using Code.Progress.SaveLoad;
+using RSG;
+using UnityEngine;
 using Zenject;
 
 namespace Code.Infrastructure.Installers
@@ -122,7 +124,7 @@ namespace Code.Infrastructure.Installers
             Container.Bind<IAbilityUIFactory>().To<AbilityUIFactory>().AsSingle();
             Container.Bind<IShopUIFactory>().To<ShopUIFactory>().AsSingle();
         }
-        
+
         private void BindUIServices()
         {
             Container.Bind<IWindowService>().To<WindowService>().AsSingle();
@@ -169,7 +171,13 @@ namespace Code.Infrastructure.Installers
 
         public void Initialize()
         {
+            Promise.UnhandledException += LogPromiseException;
             Container.Resolve<IGameStateMachine>().Enter<BootstrapState>();
+        }
+
+        private void LogPromiseException(object sender, ExceptionEventArgs e)
+        {
+            Debug.LogError(e.Exception);
         }
     }
 }
