@@ -10,6 +10,7 @@ using Code.Gameplay.Features.Loot.Configs;
 using Code.Gameplay.Windows;
 using Code.Gameplay.Windows.Configs;
 using Code.Meta.Features.AfkGain.Configs;
+using Code.Meta.UI.Shop.Items;
 using UnityEngine;
 
 namespace Code.Gameplay.StaticData
@@ -20,6 +21,7 @@ namespace Code.Gameplay.StaticData
         private Dictionary<EnchantTypeId, EnchantConfig> _enchantsById;
         private Dictionary<LootTypeId, LootConfig> _lootById;
         private Dictionary<WindowId, GameObject> _windowPrefabsById;
+        private List<ShopItemConfig> _shopItemConfigs;
         private LevelUpConfig _levelUpConfig;
         private AfkGainConfig _afkGainConfig;
         public AfkGainConfig AfkGainConfig => _afkGainConfig;
@@ -30,6 +32,7 @@ namespace Code.Gameplay.StaticData
             LoadEnchants();
             LoadLoot();
             LoadWindows();
+            LoadShopItems();
             LoadLevelUpConfig();
             LoadAfkGainConfig();
         }
@@ -69,6 +72,15 @@ namespace Code.Gameplay.StaticData
                 ? prefab
                 : throw new Exception($"Prefab config for window {id} was not found");
 
+        public List<ShopItemConfig> GetShopItemConfigs()
+        {
+            return _shopItemConfigs;
+        }
+        public ShopItemConfig GetShopItemConfig(ShopItemId shopItemId)
+        {
+            return _shopItemConfigs.FirstOrDefault(x => x.ShopItemId == shopItemId);
+        }
+        
         public AbilityLevel GetAbilityLevel(AbilityId abilityId, int level)
         {
             var config = GetAbilityConfig(abilityId);
@@ -86,19 +98,19 @@ namespace Code.Gameplay.StaticData
 
         private void LoadAbilities()
         {
-            _abilitiesById = Resources.LoadAll<AbilityConfig>("Configs/Abilities/")
+            _abilitiesById = Resources.LoadAll<AbilityConfig>("Configs/Abilities")
                 .ToDictionary(x => x.abilityId, x => x);
         }
 
         private void LoadEnchants()
         {
-            _enchantsById = Resources.LoadAll<EnchantConfig>("Configs/Enchants/")
+            _enchantsById = Resources.LoadAll<EnchantConfig>("Configs/Enchants")
                 .ToDictionary(x => x.typeId, x => x);
         }
 
         private void LoadLoot()
         {
-            _lootById = Resources.LoadAll<LootConfig>("Configs/Loot/")
+            _lootById = Resources.LoadAll<LootConfig>("Configs/Loot")
                 .ToDictionary(x => x.lootTypeId, x => x);
         }
 
@@ -110,18 +122,24 @@ namespace Code.Gameplay.StaticData
                 .ToDictionary(x => x.Id, x => x.Prefab);
         }
 
+
+        private void LoadShopItems()
+        {
+            _shopItemConfigs = Resources.LoadAll<ShopItemConfig>("Configs/ShopItems")
+                .ToList();
+        }
+
         private void LoadLevelUpConfig()
         {
             _levelUpConfig = Resources
                 .Load<LevelUpConfig>("Configs/LevelUp/LevelUpConfig");
         }
-        
+
 
         private void LoadAfkGainConfig()
         {
             _afkGainConfig = Resources
                 .Load<AfkGainConfig>("Configs/AfkGainConfig");
         }
-
     }
 }

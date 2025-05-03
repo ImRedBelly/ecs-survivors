@@ -16,7 +16,7 @@ namespace Code.Meta.Features.Simulation.Systems
                 MetaMatcher.Storage,
                 MetaMatcher.GoldPerSeconds));
 
-            _boosters = metaContext.GetGroup(MetaMatcher.GoldGameBoost);
+            _boosters = metaContext.GetGroup(MetaMatcher.GoldGainBoost);
         }
 
         public void Execute()
@@ -26,7 +26,7 @@ namespace Code.Meta.Features.Simulation.Systems
                 float gainBonus = 1;
                 foreach (var booster in _boosters)
                 {
-                    gainBonus += booster.GoldGameBoost;
+                    gainBonus += booster.GoldGainBoost;
                 }
 
                 storage.ReplaceGoldPerSeconds(_staticDataService.AfkGainConfig.goldPerSeconds * gainBonus);

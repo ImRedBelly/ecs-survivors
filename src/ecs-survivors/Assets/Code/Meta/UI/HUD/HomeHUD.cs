@@ -7,35 +7,35 @@ using Zenject;
 
 namespace Code.Meta.UI.HUD
 {
-  public class HomeHUD : MonoBehaviour
-  {
-    private const string BattleSceneName = "Meadow";
-    
-    private IGameStateMachine _stateMachine;
-    private IWindowService _windowService;
-
-    public Button StartBattleButton;
-    public Button ShopButton;
-
-    [Inject]
-    private void Construct(IGameStateMachine gameStateMachine, IWindowService windowService)
+    public class HomeHUD : MonoBehaviour
     {
-      _stateMachine = gameStateMachine;
-      _windowService = windowService;
-    }
+        private const string BattleSceneName = "Meadow";
 
-    private void Awake()
-    {
-      StartBattleButton.onClick.AddListener(EnterBattleLoadingState);
-      ShopButton.onClick.AddListener(OpenShop);
-    }
+        private IGameStateMachine _stateMachine;
+        private IWindowService _windowService;
 
-    private void EnterBattleLoadingState() => 
-      _stateMachine.Enter<LoadingBattleState, string>(BattleSceneName);
-    
-    private void OpenShop()
-    {
-      _windowService.Open(WindowId.ShopWindow);
+        public Button StartBattleButton;
+        public Button ShopButton;
+
+        [Inject]
+        private void Construct(IGameStateMachine gameStateMachine, IWindowService windowService)
+        {
+            _stateMachine = gameStateMachine;
+            _windowService = windowService;
+        }
+
+        private void Awake()
+        {
+            StartBattleButton.onClick.AddListener(EnterBattleLoadingState);
+            ShopButton.onClick.AddListener(OpenShop);
+        }
+
+        private void EnterBattleLoadingState() =>
+            _stateMachine.Enter<LoadingBattleState, string>(BattleSceneName);
+
+        private void OpenShop()
+        {
+            _windowService.Open(WindowId.ShopWindow);
+        }
     }
-  }
 }

@@ -108,15 +108,17 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 0
+  m_TextWrappingMode: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
+  m_ActiveFontFeatures: 6e72656b
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
+  m_EmojiFallbackSupport: 1
   m_parseCtrlCharacters: 1
   m_isOrthographic: 1
   m_isCullingEnabled: 0
@@ -218,7 +220,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3954431853299515522}
-  - component: {fileID: 7649151503532204664}
+  - component: {fileID: 6494753539559081312}
   m_Layer: 5
   m_Name: GoldHolder
   m_TagString: Untagged
@@ -249,7 +251,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -20}
   m_SizeDelta: {x: 450, y: 128}
   m_Pivot: {x: 0, y: 1}
---- !u!114 &7649151503532204664
+--- !u!114 &6494753539559081312
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -258,11 +260,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 3959384826562930946}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72a15085a42f483183edd1559d70beb8, type: 3}
+  m_Script: {fileID: 11500000, guid: 6dc15ad7f439461eabb64a3846f22aeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Amount: {fileID: 7766834687579841390}
-  Boost: {fileID: 4610203699562106762}
+  amount: {fileID: 7766834687579841390}
+  boost: {fileID: 4610203699562106762}
 --- !u!1 &7063784731447339564
 GameObject:
   m_ObjectHideFlags: 0
@@ -371,15 +373,17 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 0
+  m_TextWrappingMode: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
+  m_ActiveFontFeatures: 00000000
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
+  m_EmojiFallbackSupport: 1
   m_parseCtrlCharacters: 1
   m_isOrthographic: 1
   m_isCullingEnabled: 0

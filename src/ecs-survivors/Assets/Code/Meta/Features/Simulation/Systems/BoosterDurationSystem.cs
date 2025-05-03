@@ -11,7 +11,7 @@ namespace Code.Meta.Features.Simulation.Systems
         {
             _ticks = metaContext.GetGroup(MetaMatcher.Tick);
             _boosters = metaContext.GetGroup(MetaMatcher.AllOf(
-                MetaMatcher.GoldGameBoost,
+                MetaMatcher.GoldGainBoost,
                 MetaMatcher.Duration));
         }
 
