@@ -65,7 +65,7 @@ namespace Code.Meta.UI.Shop
         {
             ClearItems();
 
-            List<ShopItemConfig> availableConfigs = _shopUIService.GetAvailableShopItems();
+            List<ShopItemConfig> availableConfigs = _shopUIService.GetAvailableShopItems;
             noItemsAvailable.SetActive(availableConfigs.Count == 0);
 
             FillItems(availableConfigs);

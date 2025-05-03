@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Code.Gameplay.StaticData;
 using Code.Meta.UI.Shop.Items;
 
@@ -7,25 +8,20 @@ namespace Code.Meta.UI.Shop.Service
 {
     public class ShopUIService : IShopUIService
     {
-        public event Action ShopChanged;
-
-        private readonly IStaticDataService _staticDataService;
         private readonly List<ShopItemId> _purchasedItems = new();
         private readonly Dictionary<ShopItemId, ShopItemConfig> _availableItems = new();
+    
+        private readonly IStaticDataService _staticData;
 
-        public ShopUIService(IStaticDataService staticDataService)
-        {
-            _staticDataService = staticDataService;
-        }
-
-        public List<ShopItemConfig> GetAvailableShopItems()
-        {
-            return new List<ShopItemConfig>(_availableItems.Values);
-        }
+        public event Action ShopChanged;
+    
+        public ShopUIService(IStaticDataService staticData) => 
+            _staticData = staticData;
 
         public void UpdatePurchasedItems(IEnumerable<ShopItemId> purchasedItems)
         {
             _purchasedItems.AddRange(purchasedItems);
+
             RefreshAvailableItems();
         }
 
@@ -33,31 +29,32 @@ namespace Code.Meta.UI.Shop.Service
         {
             _availableItems.Remove(shopItemId);
             _purchasedItems.Add(shopItemId);
+      
             ShopChanged?.Invoke();
         }
+
+        public List<ShopItemConfig> GetAvailableShopItems => 
+            new(_availableItems.Values);
+
+        public ShopItemConfig GetConfig(ShopItemId shopItemId) => 
+            _availableItems.GetValueOrDefault(shopItemId);
 
         public void Cleanup()
         {
             _purchasedItems.Clear();
             _availableItems.Clear();
+      
             ShopChanged = null;
-        }
-
-        public ShopItemConfig GetConfig(ShopItemId shopItemId)
-        {
-            return _availableItems.GetValueOrDefault(shopItemId);
         }
 
         private void RefreshAvailableItems()
         {
-            foreach (var shopItemConfig in _staticDataService.GetShopItemConfigs())
+            foreach (ShopItemConfig itemConfig in _staticData.GetShopItemConfigs())
             {
-                if (!_purchasedItems.Contains(shopItemConfig.ShopItemId))
-                {
-                    _availableItems.Add(shopItemConfig.ShopItemId, shopItemConfig);
-                }
+                if(!_purchasedItems.Contains(itemConfig.ShopItemId))
+                    _availableItems.TryAdd(itemConfig.ShopItemId, itemConfig);
             }
-
+      
             ShopChanged?.Invoke();
         }
     }

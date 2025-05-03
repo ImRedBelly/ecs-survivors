@@ -62,7 +62,7 @@ namespace Code.Infrastructure.States.StateMachine
         {
             if (_activeState != null)
             {
-                _activeState.BeginExit()
+                return _activeState.BeginExit()
                     .Then(_activeState.EndExit)
                     .Then(GetState<TState>);
             }
@@ -73,8 +73,6 @@ namespace Code.Infrastructure.States.StateMachine
         private IPromise<TState> GetState<TState>() where TState : class, IExitableState
         {
             TState state = _stateFactory.GetState<TState>();
-            _activeState = state;
-
             return Promise<TState>.Resolved(state);
         }
     }

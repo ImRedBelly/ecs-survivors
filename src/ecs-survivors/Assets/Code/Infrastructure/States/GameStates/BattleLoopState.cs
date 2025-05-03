@@ -6,19 +6,19 @@ namespace Code.Infrastructure.States.GameStates
 {
     public class BattleLoopState : EndOfFrameExitState
     {
-        private readonly ISystemFactory _systemsFactory;
+        private readonly ISystemFactory _systems;
         private BattleFeature _battleFeature;
         private readonly GameContext _gameContext;
 
-        public BattleLoopState(ISystemFactory systemsFactory, GameContext gameContext)
+        public BattleLoopState(ISystemFactory systems, GameContext gameContext)
         {
-            _systemsFactory = systemsFactory;
+            _systems = systems;
             _gameContext = gameContext;
         }
 
         public override void Enter()
         {
-            _battleFeature = _systemsFactory.Create<BattleFeature>();
+            _battleFeature = _systems.Create<BattleFeature>();
             _battleFeature.Initialize();
         }
 
@@ -27,7 +27,7 @@ namespace Code.Infrastructure.States.GameStates
             _battleFeature.Execute();
             _battleFeature.Cleanup();
         }
-
+        
         protected override void ExitOnEndOfFrame()
         {
             _battleFeature.DeactivateReactiveSystems();

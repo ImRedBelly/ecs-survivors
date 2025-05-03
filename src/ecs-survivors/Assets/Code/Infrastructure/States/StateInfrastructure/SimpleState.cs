@@ -18,8 +18,6 @@ namespace Code.Infrastructure.States.StateInfrastructure
             return Promise.Resolved();
         }
 
-        void IExitableState.EndExit()
-        {
-        }
+        void IExitableState.EndExit() { }
     }
 }

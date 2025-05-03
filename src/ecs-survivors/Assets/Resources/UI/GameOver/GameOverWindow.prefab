@@ -130,6 +130,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1062566730100706897}
+  - component: {fileID: 7955982939042997364}
   m_Layer: 5
   m_Name: GameOverWindow
   m_TagString: Untagged
@@ -159,6 +160,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1000, y: 576}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &7955982939042997364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3736859193308572716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5531409480af4bed8993309fa4f441f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ReturnHomeButton: {fileID: 4779439313395022901}
 --- !u!1 &6347036738915082666
 GameObject:
   m_ObjectHideFlags: 0
